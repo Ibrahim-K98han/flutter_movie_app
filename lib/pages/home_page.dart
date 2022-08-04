@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.black,
         body: Stack(
           children: [
-            Image.asset('images/spotlight.jpg', width: double.infinity,height: double.infinity,fit: BoxFit.cover,),
+            Opacity(opacity: 0.5, child: Image.asset('images/spotlight.jpg', width: double.infinity,height: double.infinity,fit: BoxFit.cover,)),
             PageView.builder(
                 controller: pageController,
                 itemBuilder: (context, index)=>MovieItem(movies[index], pageNumber, index.toDouble()),
