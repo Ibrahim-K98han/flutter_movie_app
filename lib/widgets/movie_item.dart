@@ -13,6 +13,7 @@ class MovieItem extends StatefulWidget {
 }
 
 class _MovieItemState extends State<MovieItem> {
+  final textWhitStyle = TextStyle(fontSize: 18, color: Colors.white);
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -28,6 +29,54 @@ class _MovieItemState extends State<MovieItem> {
         ),
         SliverList(
           delegate: SliverChildListDelegate([
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.deepPurple.shade900,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black,
+                    blurRadius: 5,
+                    spreadRadius: 1,
+                    offset: Offset(0,5),
+                  ),
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ListTile(
+                    title: Text(widget.movie.name!,style: textWhitStyle),
+                    subtitle: Text(widget.movie.category!,style: textWhitStyle,),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.star,color: Colors.white,),
+                        Text('${widget.movie.rating}',style: textWhitStyle,),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 150,
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width / 1.5,
+                      child: ListView(
+                        children: [
+                          Text('Directed      : ${widget.movie.director}',style: textWhitStyle,),
+                          Text('Produced      : ${widget.movie.producer}',style: textWhitStyle,),
+                          Text('Production    : ${widget.movie.production}',style: textWhitStyle,),
+                          Text('Language      : ${widget.movie.language}',style: textWhitStyle,),
+                          Text('Running Time  : ${widget.movie.runningTime}',style: textWhitStyle,),
+                          Text('Country       : ${widget.movie.country}',style: textWhitStyle,),
+                          Text('Budget        : ${widget.movie.budget}',style: textWhitStyle,),
+                          Text('Box Office    : ${widget.movie.boxOffice}',style: textWhitStyle,),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              )
+            ),
             Stack(
               children: [
                 Card(
@@ -37,13 +86,14 @@ class _MovieItemState extends State<MovieItem> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left:10, right:10, top:100, bottom: 10),
-                    child: Text(widget.movie.description!, style: TextStyle(fontSize: 18,color: Colors.white),),
+                    child: Text(widget.movie.description!, style: textWhitStyle),
 
                   ),
                 ),
               ],
-            )
-          ]),
+            ),
+          ],
+          ),
         ),
       ],
     );
