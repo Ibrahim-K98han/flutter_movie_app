@@ -30,6 +30,7 @@ class _MovieItemState extends State<MovieItem> {
         SliverList(
           delegate: SliverChildListDelegate([
             Container(
+              margin: const EdgeInsets.symmetric(horizontal: 5,vertical: 5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.deepPurple.shade900,
@@ -56,21 +57,36 @@ class _MovieItemState extends State<MovieItem> {
                       ],
                     ),
                   ),
-                  Container(
-                    height: 150,
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width / 1.5,
-                      child: ListView(
-                        children: [
-                          Text('Directed      : ${widget.movie.director}',style: textWhitStyle,),
-                          Text('Produced      : ${widget.movie.producer}',style: textWhitStyle,),
-                          Text('Production    : ${widget.movie.production}',style: textWhitStyle,),
-                          Text('Language      : ${widget.movie.language}',style: textWhitStyle,),
-                          Text('Running Time  : ${widget.movie.runningTime}',style: textWhitStyle,),
-                          Text('Country       : ${widget.movie.country}',style: textWhitStyle,),
-                          Text('Budget        : ${widget.movie.budget}',style: textWhitStyle,),
-                          Text('Box Office    : ${widget.movie.boxOffice}',style: textWhitStyle,),
-                        ],
+                  ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(10.0),
+                      bottomRight: Radius.circular(10.0),
+                    ),
+                    child: Container(
+                      padding: const EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Colors.deepPurple.shade900, Colors.deepPurple.shade400],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
+                      alignment: Alignment.center,
+                      height: 150,
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width / 1.5,
+                        child: ListView(
+                          children: [
+                            Text('Directed      : ${widget.movie.director}',style: textWhitStyle,),
+                            Text('Produced      : ${widget.movie.producer}',style: textWhitStyle,),
+                            Text('Production    : ${widget.movie.production}',style: textWhitStyle,),
+                            Text('Language      : ${widget.movie.language}',style: textWhitStyle,),
+                            Text('Running Time  : ${widget.movie.runningTime}',style: textWhitStyle,),
+                            Text('Country       : ${widget.movie.country}',style: textWhitStyle,),
+                            Text('Budget        : ${widget.movie.budget}',style: textWhitStyle,),
+                            Text('Box Office    : ${widget.movie.boxOffice}',style: textWhitStyle,),
+                          ],
+                        ),
                       ),
                     ),
                   )
